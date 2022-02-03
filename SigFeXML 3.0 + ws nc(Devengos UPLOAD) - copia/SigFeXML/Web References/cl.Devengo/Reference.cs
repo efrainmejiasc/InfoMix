@@ -931,7 +931,7 @@ namespace SigFeXML.cl.Devengo {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://dipres.gob.cl/ejecucion/devengo/esquema/1/0/")]
     public partial class TransaccionPrevia {
-        
+        internal long folioCombinacion;
         private long folioField;
         
         private bool folioFieldSpecified;
