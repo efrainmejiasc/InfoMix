@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Envelope xmlns="http://www.w3.org/2003/05/soap-envelope">
+	<Header />
+	<Body>
+<Devengo xmlns="http://sigfe.cl/ws/inter/verticales/devengo">
+	<cabeceraArchivoType>
+		<ejercicio>2016</ejercicio>
+		<periodo>03</periodo>
+		<proceso>0301</proceso>
+		<identificacionEnvio>1603220600462177</identificacionEnvio>
+		<montoTotal>614217</montoTotal>
+		<cantidadTransacciones>4</cantidadTransacciones>
+		<usuarioGenerador>cmunozca</usuarioGenerador>
+		<usuarioAprobador>cmunozca</usuarioAprobador>
+		<informacionInstitucionType>
+			<partida>16</partida>
+			<capitulo>04</capitulo>
+			<areaTransaccional>001</areaTransaccional>
+		</informacionInstitucionType>
+	</cabeceraArchivoType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>554537</idTransferencia>
+		<titulo>FE_463123_2016-03-22</titulo>
+		<descripcionTransaccionDevengo>FE_463123_2016-03-22</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0201</tipoDocumento>
+			<descripcionDocumentoDevengo>FE_463123_2016-03-22</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>463123</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2016-03-22</fechaDocumentoDevengo>
+			<fechaRecepcionConforme>2016-03-22</fechaRecepcionConforme>
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>79058</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>77231780-8</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>2248123</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>134</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>79058</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>79058</montoCuentaDebe>
+								<montoCuentaHaber>79058</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>77231780-8</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-05-22</fechaCumplimiento>
+					<montoCumplimiento>79058</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>554538</idTransferencia>
+		<titulo>FE_463128_2016-03-22</titulo>
+		<descripcionTransaccionDevengo>FE_463128_2016-03-22</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0201</tipoDocumento>
+			<descripcionDocumentoDevengo>FE_463128_2016-03-22</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>463128</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2016-03-22</fechaDocumentoDevengo>
+			<fechaRecepcionConforme>2016-03-22</fechaRecepcionConforme>
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>478689</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>70882100-4</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>2245449</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>87</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>478689</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>478689</montoCuentaDebe>
+								<montoCuentaHaber>478689</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>70882100-4</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-05-22</fechaCumplimiento>
+					<montoCumplimiento>478689</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>554539</idTransferencia>
+		<titulo>FE_463124_2016-03-22</titulo>
+		<descripcionTransaccionDevengo>FE_463124_2016-03-22</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0201</tipoDocumento>
+			<descripcionDocumentoDevengo>FE_463124_2016-03-22</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>463124</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2016-03-22</fechaDocumentoDevengo>
+			<fechaRecepcionConforme>2016-03-22</fechaRecepcionConforme>
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>45176</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>70285100-9</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>2248123</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>134</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>45176</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>45176</montoCuentaDebe>
+								<montoCuentaHaber>45176</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>70285100-9</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-05-22</fechaCumplimiento>
+					<montoCumplimiento>45176</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>554540</idTransferencia>
+		<titulo>FE_463125_2016-03-22</titulo>
+		<descripcionTransaccionDevengo>FE_463125_2016-03-22</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0201</tipoDocumento>
+			<descripcionDocumentoDevengo>FE_463125_2016-03-22</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>463125</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2016-03-22</fechaDocumentoDevengo>
+			<fechaRecepcionConforme>2016-03-22</fechaRecepcionConforme>
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>11294</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>9475816-5</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>2248123</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>134</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>11294</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>11294</montoCuentaDebe>
+								<montoCuentaHaber>11294</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>9475816-5</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-05-22</fechaCumplimiento>
+					<montoCumplimiento>11294</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+</Devengo></Body>
+</Envelope>

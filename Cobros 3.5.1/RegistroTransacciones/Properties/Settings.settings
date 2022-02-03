@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RegistroTransacciones.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RegistroTransacciones_t03_Estado_EstadoDeTransaccionBindingQSService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://t03.sigfe.gob.cl/ejecucion/comun/EstadoDeTransaccion_1_0</Value>
+    </Setting>
+    <Setting Name="RegistroTransacciones_t03_contabilidad_contabilidad" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://t03.sigfe.gob.cl/ejecucion/contabilidad/Contabilidad_1_0</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

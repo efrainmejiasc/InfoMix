@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Envelope xmlns="http://www.w3.org/2003/05/soap-envelope">
+	<Header />
+	<Body>
+<Devengo xmlns="http://sigfe.cl/ws/inter/verticales/devengo">
+	<cabeceraArchivoType>
+		<ejercicio>2015</ejercicio>
+		<periodo>12</periodo>
+		<proceso>0301</proceso>
+		<identificacionEnvio>1512040524219054</identificacionEnvio>
+		<montoTotal>3218385</montoTotal>
+		<cantidadTransacciones>4</cantidadTransacciones>
+		<usuarioGenerador>cmunozca</usuarioGenerador>
+		<usuarioAprobador>cmunozca</usuarioAprobador>
+		<informacionInstitucionType>
+			<partida>16</partida>
+			<capitulo>04</capitulo>
+			<areaTransaccional>001</areaTransaccional>
+		</informacionInstitucionType>
+	</cabeceraArchivoType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>161448</idTransferencia>
+		<titulo>BV_174126_2015-12-04</titulo>
+		<descripcionTransaccionDevengo>BV_174126_2015-12-04</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0900</tipoDocumento>
+			<descripcionDocumentoDevengo>BV_174126_2015-12-04</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>174126</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2015-12-04</fechaDocumentoDevengo>
+			<fechaRecepcionConforme />
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>3193908</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>83002400-K</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>1167532</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>1</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>3193908</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>3193908</montoCuentaDebe>
+								<montoCuentaHaber>3193908</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>83002400-K</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-02-04</fechaCumplimiento>
+					<montoCumplimiento>3193908</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>161449</idTransferencia>
+		<titulo>BV_174127_2015-12-04</titulo>
+		<descripcionTransaccionDevengo>BV_174127_2015-12-04</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0900</tipoDocumento>
+			<descripcionDocumentoDevengo>BV_174127_2015-12-04</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>174127</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2015-12-04</fechaDocumentoDevengo>
+			<fechaRecepcionConforme />
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>8159</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>12247575-1</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>1173842</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>143</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>8159</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>8159</montoCuentaDebe>
+								<montoCuentaHaber>8159</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>12247575-1</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-02-04</fechaCumplimiento>
+					<montoCumplimiento>8159</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>161450</idTransferencia>
+		<titulo>BV_174128_2015-12-04</titulo>
+		<descripcionTransaccionDevengo>BV_174128_2015-12-04</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0900</tipoDocumento>
+			<descripcionDocumentoDevengo>BV_174128_2015-12-04</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>174128</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2015-12-04</fechaDocumentoDevengo>
+			<fechaRecepcionConforme />
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>8159</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>16040616-K</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>1173842</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>143</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>8159</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>8159</montoCuentaDebe>
+								<montoCuentaHaber>8159</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>16040616-K</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-02-04</fechaCumplimiento>
+					<montoCumplimiento>8159</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>161451</idTransferencia>
+		<titulo>BV_174129_2015-12-04</titulo>
+		<descripcionTransaccionDevengo>BV_174129_2015-12-04</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0900</tipoDocumento>
+			<descripcionDocumentoDevengo>BV_174129_2015-12-04</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>174129</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2015-12-04</fechaDocumentoDevengo>
+			<fechaRecepcionConforme />
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>false</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>8159</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>
+				</codigoImpuesto>
+				<montoBase />
+			</impuestoType>
+			<principalType>
+				<rut>13414180-8</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>1173842</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>143</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0702</concepto>
+							<montoNeto>8159</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>43101</codigoCuentaHaber>
+								<montoCuentaDebe>8159</montoCuentaDebe>
+								<montoCuentaHaber>8159</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>13414180-8</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-02-04</fechaCumplimiento>
+					<montoCumplimiento>8159</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+</Devengo></Body>
+</Envelope>

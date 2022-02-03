@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SigFeXML.SiteMaster" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="~/App_Themes/Sigfe/Sigfe.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" language="JavaScript">
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+
+        function EndRequestHandler(sender, args) {
+
+            if (args.get_error() != undefined) {
+
+                args.set_errorHandled(true);
+            }
+        }
+
+        function AceptaNumeroFecha(evt) {
+            var nav4 = window.Event ? true : false;
+            var key = nav4 ? evt.which : evt.keyCode;
+            return ((key >= 48 && key <= 57) || (key == 47) || (key == 8));
+        }
+
+        function Floats(obj, e) {
+            // NOTE: Backspace = 8, Enter = 13, '0' = 48, '9' = 57, ',' = 44
+            cadena = obj.value;
+            key = (document.all) ? e.keyCode : e.which;
+            // buscar en la cadena si existe ','
+            if (cadena.indexOf(',') == -1 && cadena.length > 0) {
+                return (key <= 13 || (key >= 48 && key <= 57) || key == 44);
+            } else {
+                return (key <= 13 || (key >= 48 && key <= 57));
+            }
+        }
+
+        function checkDate(sender, args) {
+            if (sender._selectedDate > new Date()) {
+                alert("No puede seleccionar una fecha mayor a la actual");
+                sender._selectedDate = new Date();
+                sender._textbox.set_Value(sender._selectedDate.format(sender._format));
+            }
+        }
+    </script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+    <div class="page">
+        <%--TOOLKIT SCRIPT MANAGER--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptLocalization="True"  AsyncPostBackTimeout="10800">
+        </asp:ScriptManager>
+        <%--JAVASCRIPT--%>
+        <script language="javascript" type="text/javascript">
+            var ModalProgress = '<%= pProcesando_ModalPopupExtender.ClientID %>';
+            Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(beginReq);
+
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endReq);
+
+            function beginReq(sender, args) {
+                $find(ModalProgress).show();
+            }
+            function endReq(sender, args) {
+                $find(ModalProgress).hide();
+            }
+
+        </script>
+        <div style="background-image: url('/images/framework_logo.png'); position: relative;">
+            <%-- <div style="background-color: red;" >--%>
+            <div style="height: 160px; margin-left: 0px;">
+            </div>
+        </div>
+        
+        <div id="menu" style="background-color: #F3F3F3;">
+                <ul>
+                    <li runat="server" style="border: 1px #A9A9A9 solid;"><a href="XML.aspx">GENERADOR XML</a></li>
+                    <li runat="server" style="border: 1px #A9A9A9 solid;"><a href="Man_Requerimientos.aspx">MANTENEDOR REQUERIMIENTO</a></li>
+                    <li class="last" style="border: 1px #A9A9A9 solid;"><a href="Login.aspx">Cerrar Sesión</a></li>
+                </ul>
+            </div>
+
+        <%--<div style="height: 20px">
+       
+            <div style="position: relative; float: left; width: 150px; margin-left: 180px;">
+                <asp:LinkButton ID="lbnXML" runat="server" Text="GENERADOR XML" 
+                    onclick="lbnXML_Click"></asp:LinkButton>
+            </div>
+            <div style="position: relative; float: left; width: 240px;">
+                <asp:LinkButton ID="lbnMantenedor" runat="server" 
+                    Text="MANTENEDOR REQUERIMIENTO" onclick="lbnMantenedor_Click"></asp:LinkButton>
+            </div>
+            <div style="position: relative; float: left; width: 300px;">
+                <asp:LinkButton ID="lbnSalir" runat="server" CssClass="inicioManualSalir" meta:resourcekey="lbnSalir"
+                    OnClick="lbnSalir_Click">CERRAR SESION</asp:LinkButton>
+            </div>
+        </div>--%>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:Panel ID="pProcesando" runat="server" CssClass="PanelProcesando">
+            <asp:UpdateProgress ID="upProcesando" runat="server" DisplayAfter="0">
+                <ProgressTemplate>
+                    <div align="center">
+                        <table class="Procesando">
+                            <tr>
+                                <th>
+                                    <br />
+                                    <asp:Image ID="Image1" runat="server" ImageUrl="images/ajax-loader.gif" />
+                                    <br />
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblProcesando" runat="server" Text="Procesando..." />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </asp:Panel>
+        <cc1:ModalPopupExtender ID="pProcesando_ModalPopupExtender" runat="server" BackgroundCssClass="SegundoPlano"
+            PopupControlID="pProcesando" TargetControlID="pProcesando">
+        </cc1:ModalPopupExtender>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>

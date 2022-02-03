@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.sigfe.gob.cl/ejecucion/devengo/Devengo_1_0?SCHEMA/dipres.gob.cl/ejecucion/devengo/xsd/Devengo_1_0" filename="Devengo_1_0.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://www.sigfe.gob.cl/ejecucion/devengo/Devengo_1_0?WSDL/dipres.gob.cl/ejecucion/devengo/wsdl/Devengo_1_0" filename="contrato.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://www.sigfe.gob.cl/ejecucion/devengo/Devengo_1_0?wsdl" filename="DevengoService.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://www.sigfe.gob.cl/ejecucion/devengo/Devengo_1_0?SCHEMA/dipres.gob.cl/ejecucion/comun/xsd/Comun_1_0" filename="Comun_1_0.xsd" />
+  </Results>
+</DiscoveryClientResultsFile>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- edited with XMLSpy v2008 (http://www.altova.com) by TEAM ViRiLiTY (VRL) -->
+<xsd:schema xmlns:comun="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" xmlns:et="http://dipres.gob.cl/ejecucion/comun/estadoDeTransaccion/esquema/1/0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://dipres.gob.cl/ejecucion/comun/estadoDeTransaccion/esquema/1/0/" elementFormDefault="qualified" attributeFormDefault="qualified" version="1.0" xml:lang="es">
+	<xsd:import namespace="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" schemaLocation="Comun_1_0.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>Este paquete define los esquemas de datos relacionados específicamente con la entidad EstadoDeTransaccion, y que se utilizan para la definición e implementación del contrato del servicio Web.</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexType name="EstadoDeTransaccion">
+		<xsd:sequence>
+			<xsd:element name="folio" type="comun:Folio"/>
+			<xsd:element name="id" type="comun:Id"/>
+			<xsd:element name="resultado" type="xsd:boolean"/>
+			<xsd:element name="errores" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="error" type="comun:DetalleFalla" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EstadosDeTransacciones">
+		<xsd:sequence>
+			<xsd:element name="estado" type="et:EstadoDeTransaccion" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

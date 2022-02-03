@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:comun="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" xmlns:dp="http://dipres.gob.cl/ejecucion/devengo/esquema/1/0/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dipres.gob.cl/ejecucion/devengo/esquema/1/0/" version="1.0" xml:lang="es" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://www.sigfe.gob.cl/ejecucion/devengo/Devengo_1_0?SCHEMA%2Fdipres.gob.cl%2Fejecucion%2Fcomun%2Fxsd%2FComun_1_0" namespace="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" />
+  <xsd:annotation>
+    <xsd:documentation>Este??paquete??define??los??esquemas??de??datos??relacionados??espec??ficamente??con??la??entidad??Devengo,??y??que??se??utilizan??para??la??definici??n??e??implementaci??n??del??contrato??del??servicio??Web.
+		</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="AgrupacionDeImputacionesACatalogos">
+    <xsd:annotation>
+      <xsd:documentation>Representa una combinaci??n de cat??logos de
+				reagrupaci??n.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="imputacionesAConceptosPresupuestarios">
+        <xsd:annotation>
+          <xsd:documentation>Representa la imputaci??n de un monto a un
+						concepto presupuestario en particular.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="imputacion" type="dp:ImputacionAConceptoPresupuestario" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="imputacionesACatalogosDeReagrupacion">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="imputacion" type="comun:ImputacionACatalogoDeReagrupacion" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="AgrupacionesDeImputacionesACatalogos">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="agrupacion" type="dp:AgrupacionDeImputacionesACatalogos" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImputacionAConceptoPresupuestario">
+    <xsd:annotation>
+      <xsd:documentation>Representa la imputaci??n de un monto a un concepto
+				presupuestario en particular.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="codigo">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del concepto
+						presupuestario en el cat??logo Presupuestario.
+
+						Los conceptos
+						presupuestarios informados en asociaci??n a una
+						combinaci??n de
+						cat??logos de reagrupaci??n deben ser consistentes
+						con los conceptos
+						presupuestarios que ??sta tiene asociados en la
+						transacci??n de
+						referencia.
+
+						En una transacci??n, un concepto presupuestario no puede
+						ser
+						informado m??s de una vez en asociaci??n a una misma combinaci??n
+						de
+						cat??logos de reagrupaci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="2" />
+            <xsd:maxLength value="12" />
+            <xsd:pattern value="[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="monto" type="comun:Monto">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el monto neto imputado al concepto
+						presupuestario, para la combinaci??n de cat??logos de reagrupaci??n
+						correspondiente.En una transacci??n de creaci??n, el monto imputado
+						a un concepto presupuestario no puede ser negativo. En una
+						transacci??n de ajuste, el monto imputado a un concepto
+						presupuestario puede ser negativo, siempre y cuando el monto
+						imputado al concepto presupuestario en la transacci??n actualizada
+						no quede negativo como resultado del ajuste.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="contabilizaciones">
+        <xsd:annotation>
+          <xsd:documentation>Representa la contabilizaci??n del monto imputado
+						al concepto presupuestario; esta informaci??n no forma parte de la
+						transacci??n de Devengo, pero ser?? utilizada. Este tag s??lo debe
+						llevar valores cuando el concepto presupuestario est?? asociado a
+						m??s de dos cuentas contables en la configuraci??n de SIGFE 2.0.en
+						el asiento contable asociado a ??sta.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="contabilizacion" type="dp:ImputacionAAsientoContable" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImputacionAAsientoContable">
+    <xsd:annotation>
+      <xsd:documentation>Representa la contabilizaci??n del monto imputado
+				al concepto presupuestario; esta informaci??n no forma parte de la
+				transacci??n de Devengo, pero ser?? utilizada en el asiento contable
+				asociado a ??sta.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="cuentaDebe">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo en el cat??logo Contable de
+						la cuenta contable al Debe.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="12" />
+            <xsd:pattern value="[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="cuentaHaber">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo en el cat??logo Contable de
+						la cuenta contable al Haber.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="1" />
+            <xsd:maxLength value="12" />
+            <xsd:pattern value="[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="montoDebe" type="comun:Monto" />
+      <xsd:element name="montoHaber" type="comun:Monto" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Cumplimiento">
+    <xsd:annotation>
+      <xsd:documentation>Representa informaci??n de cumplimiento asociada al
+				Principal, o bien a un Principal Relacionado.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="fecha" type="comun:Fecha" />
+      <xsd:element name="monto" type="comun:Monto" />
+      <xsd:element name="idPrincipalRelacionado" type="comun:Id" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Devengo">
+    <xsd:annotation>
+      <xsd:documentation>Representa a una ??nica transacci??n de Devengo
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="id" type="comun:Id">
+        <xsd:annotation>
+          <xsd:documentation>Identificador de negocio para la transacci??n. No
+						corresponde al folio de la transacci??n, ya que este se genera
+						posteriormente, ante una creaci??n exitosa.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="titulo" type="comun:TituloTransaccion">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el nombre de la transacci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="descripcion" type="comun:DescripcionTransaccion">
+        <xsd:annotation>
+          <xsd:documentation>Rese??a de la transacci??n</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="documentos">
+        <xsd:annotation>
+          <xsd:documentation>Representa??al conjunto de
+						documentos??de??negocio??incluidos??en??la??transacci??n.??Actualmente
+						s??lo se soporta un documento por devengo.
+						En algunos casos, un devengo puede venir sin documentos. Por
+						ejemplo, en el caso de un ajuste por error de tipeo.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="documento" type="dp:Documento" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="imputacionesACatalogosContables">
+        <xsd:annotation>
+          <xsd:documentation>Representa??una??imputaci??n??a??un??cat??logo??propio??de??contabilidad.??
+						Esta??informaci??n??no??forma??parte??de??la??transacci??n??de??Devengo,??pero??ser????utilizada??en??el??asiento??contable??asociado??a????sta.
+						Cuando la configuraci??n de SIGFE 2.0 determina que no se requiere
+						imputar a cat??logos propios de contabilidad en los asientos
+						contables, este tag debe ser dejado sin valores.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="imputacion" type="dp:ImputacionACatalogoContable" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="informacionDeAjuste" type="comun:InformacionDeAjuste" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Documento">
+    <xsd:annotation>
+      <xsd:documentation>Representa??a??un??documento??de??negocio??incluido??en??la??transacci??n.??
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="id" type="comun:Folio" />
+      <xsd:element name="numero" type="comun:NumeroDocumento">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el N??mero de Documento.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="monto" type="comun:Monto">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es igual al monto total neto de la
+						transacci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tipo" type="comun:TipoDocumento">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del Tipo de Documento.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fecha" type="comun:Fecha" />
+      <xsd:element name="descripcion" type="comun:DescripcionDocumento">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es la Descripci??n del documento de
+						negocio.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="fechaRecepcionConforme" type="comun:Fecha" />
+      <xsd:element minOccurs="0" name="idDocumentoAjustado" type="comun:Folio">
+        <xsd:annotation>
+          <xsd:documentation>El valor de este tag identifica el documento de
+						negocio de la transacci??n a ajustar sobre el cual se aplicar??n los
+						cambios informados.
+
+						S??lo debe llevar valor cuando la transacci??n es
+						de ajuste.
+
+						Para obtener su valor, se deben seguir los siguientes
+						pasos:
+
+						1.- Consultar la transacci??n a ajustar.
+
+						2.- De la respuesta a
+						la consulta, obtener el valor del tag
+						???&lt;correlativoDocumento&gt;???.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="tipoDeCambio" type="comun:TipoDeCambio" />
+      <xsd:element name="principales">
+        <xsd:annotation>
+          <xsd:documentation>Corresponde a la informaci??n del documento de
+						negocio asociada a un Principal en particular.
+
+						Puede repetirse m??s
+						de una vez dentro de la transacci??n, lo que
+						representar??a la
+						inclusi??n de m??s de un Principal en la
+						transacci??n (se debe tener
+						en cuenta que no todos los Tipos de
+						Documento permiten m??s de un
+						Principal).
+
+						Un mismo Principal no puede ser informado m??s de una
+						vez en una
+						transacci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="principal" type="dp:Principal" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="imputacionesAGlosas" type="comun:ImputacionesAGlosas">
+        <xsd:annotation>
+          <xsd:documentation>Representa una imputaci??n a una glosa
+						presupuestaria controlable espec??fica, a nivel de letra.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="camposVariables" type="comun:CamposVariables">
+        <xsd:annotation>
+          <xsd:documentation>Corresponde a una imputaci??n a un campo variable
+						existente en la configuraci??n institucional.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="impuestos">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="impuesto" type="dp:Impuesto" />
+            <xsd:element name="contabilizaImpuestos" type="xsd:boolean" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Impuesto">
+    <xsd:annotation>
+      <xsd:documentation>Representa la aplicaci??n de uno de los impuestos
+				definidos en la configuraci??n de SIGFE 2.0.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="codigo">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del impuesto a aplicar.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2" />
+            <xsd:pattern value="[a-zA-Z0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="monto" type="comun:Monto" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImputacionACatalogoContable">
+    <xsd:annotation>
+      <xsd:documentation>Representa una imputaci??n a un cat??logo propio de
+				contabilidad. Esta informaci??n no forma parte de la transacci??n de
+				Devengo, pero ser?? utilizada en el asiento contable asociado a ??sta.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="catalogo" type="comun:IdConfiguracion">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del cat??logo propio de
+						contabilidad informado junto con la transacci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elemento" type="comun:IdConfiguracion">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el valor imputado al cat??logo propio
+						de contabilidad.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Principal">
+    <xsd:annotation>
+      <xsd:documentation>Corresponde a la informaci??n del documento de
+				negocio asociada a un Principal en particular.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="id" type="comun:Id" />
+      <xsd:element name="cumplimientos">
+        <xsd:annotation>
+          <xsd:documentation>Representa informaci??n de cumplimiento asociada
+						al Principal, o bien a un Principal Relacionado. Este tag debe ser
+						incluido al menos una vez, con la informaci??n de cumplimiento
+						asociada al Principal.
+
+						Cuando la transacci??n hace uso de la
+						funcionalidad ???Transferencia
+						Electr??nica de Datos???, la transacci??n
+						no puede incluir un
+						Principal Relacionado. Consiguientemente, en
+						este caso, el tag no
+						puede ser usado para informar un Principal
+						Relacionado.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="cumplimiento" type="dp:Cumplimiento" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="transaccionesPrevias">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="transaccion" type="dp:TransaccionPrevia" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResumenDeDevengo">
+    <xsd:sequence>
+      <xsd:element name="folio" type="comun:Folio" />
+      <xsd:element name="ejercicio" type="comun:Ejercicio" />
+      <xsd:element name="titulo" type="comun:TituloTransaccion" />
+      <xsd:element name="monto" type="comun:Monto" />
+      <xsd:element name="estado" type="xsd:string" />
+      <xsd:element name="documentos">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="documento" type="dp:ResumenDocumento" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TransaccionPrevia">
+    <xsd:annotation>
+      <xsd:documentation>Representa una combinaci??n de cat??logos de
+				reagrupaci??n, junto a sus conceptos presupuestarios asociados. Su
+				informaci??n hace referencia a una transacci??n de referencia, la cual
+				otorga la disponibilidad presupuestaria a los montos imputados a los
+				conceptos presupuestarios.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="folio" type="comun:Folio">
+        <xsd:annotation>
+          <xsd:documentation>Su??valor??es??el??c??digo que le otorga el sistema transaccional (el folio)??del??Proceso??
+					Operacional??de??la??transacci??n??de??referencia (compromiso o requerimiento).??S??lo??debe??llevar??valor??cuando??
+					la??transacci??n??es??de??creaci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="tipo" type="comun:TipoTransaccionPrevia">
+        <xsd:annotation>
+          <xsd:documentation>Requerimiento(1) o compromiso(2)</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="idAgrupacionAjustada" type="comun:Folio">
+        <xsd:annotation>
+          <xsd:documentation>Este??valor??identifica??una??combinaci??n??de??cat??logos??de??reagrupaci??n. 
+          			Cuando??el??Tipo??de??Transacci??n??es?????Ajuste???,??identifica??la??combinaci??n??de??la??transacci??n??a??ajustar??
+          			sobre??la??cual??se??aplicar??n??los??cambios??informados. Para??obtener??su??valor,??se??deben??seguir??los??
+          			siguientes??pasos:
+          			- Consultar??la??transacci??n??a??ajustar.
+          			- De??la??respuesta??a??la??consulta,??obtener??el??valor??del??tag?????correlativoRequerimientoCompromiso?????
+          			para??la??combinaci??n??de??cat??logos??correspondiente.
+          			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="idAgrupacionDeReferencia" type="comun:Folio">
+        <xsd:annotation>
+          <xsd:documentation>Este??valor??identifica??una??combinaci??n??de??cat??logos??de??reagrupaci??n. 
+          			Cuando??el??Tipo??de??Transacci??n??es?????Creaci??n???,??identifica??la??combinaci??n??de??la??transacci??n??de??referencia??
+          			desde??la??cual??se??obtiene??la??disponibilidad??presupuestaria. Para??obtener??su??valor,??se??deben??seguir??los??
+          			siguientes??pasos:
+          			Para??una??creaci??n??de??Devengo??asociada??a??un??Requerimiento:
+          			- Consultar??el??Requerimiento.
+          			-??De??la??respuesta??a??la??consulta,??obtener??el??valor??del??tag?????correlativoAgrupacion?????para??la??combinaci??n??de??
+          			cat??logos??correspondiente.??
+          			Para??una??creaci??n??de??Devengo??asociada??a??un??Compromiso:
+          			-??Consultar??el??Compromiso.
+          			-??De??la??respuesta??a??la??consulta,??obtener??el??valor??del??tag?????correlativo;?????para??la??combinaci??n??de??cat??logos??
+          			correspondiente.
+          			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="agrupacionesDeImputacionesACatalogos" type="dp:AgrupacionesDeImputacionesACatalogos">
+        <xsd:annotation>
+          <xsd:documentation>Representa una combinaci??n de cat??logos de reagrupaci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResumenDocumento">
+    <xsd:sequence>
+      <xsd:element name="numero" type="comun:NumeroDocumento" />
+      <xsd:element name="tipo" type="comun:TipoDocumento" />
+      <xsd:element name="moneda" type="comun:Moneda" />
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

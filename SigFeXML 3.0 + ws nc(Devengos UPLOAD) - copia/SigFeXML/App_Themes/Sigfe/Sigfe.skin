@@ -1,0 +1,220 @@
+<%--
+Plantilla de máscara predeterminada. Las siguientes máscaras se proporcionan sólo como ejemplos.
+
+1. Máscara de control con nombre. SkinId debería definirse de forma única porque
+no se permite que haya varios SkinId por tipo de control en el mismo tema.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Máscara predeterminada. Skinid no está definido Sólo se permite 
+   una máscara de control por tipo de control en el mismo tema.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:DataGrid SkinId="DataGridNormal" runat="server" 
+    AllowPaging="True" 
+    AllowSorting="True" 
+    AutoGenerateColumns="False" 
+    BackColor="White" 
+    BorderColor="#CCCCCC" 
+    BorderStyle="Solid" 
+    BorderWidth="1px" 
+    CellPadding="3" 
+    Font-Bold="False" 
+    Font-Italic="False" 
+    Font-Overline="False" 
+    Font-Size="12px" 
+    Font-Strikeout="False" 
+    Font-Underline="False" 
+    ForeColor="#333333" 
+    GridLines="Vertical" 
+    PageSize="20">
+    <AlternatingItemStyle 
+        BackColor="#E6E6E6" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Strikeout="False" 
+        Font-Underline="False" />
+    <FooterStyle 
+        BackColor="#999999" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        ForeColor="White" />
+    <HeaderStyle 
+        BackColor="Silver" 
+        Font-Bold="True" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Size="12px" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        HorizontalAlign="Center" 
+        VerticalAlign="Middle" />
+    <PagerStyle 
+        BackColor="Silver" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Size="12px" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        ForeColor="Black" 
+        HorizontalAlign="Center" 
+        Mode="NumericPages" />
+</asp:DataGrid>
+
+<asp:DropDownList SkinId="DropDownListNormal" runat="server" 
+    Font-Size="9pt" 
+    ForeColor="#333333"/>
+
+<asp:TextBox SkinId="TextBoxNormal" runat="server" 
+    Font-Size="9pt" 
+    ForeColor="#333333"/>
+
+
+
+<asp:DataGrid SkinId="DataGridGrilla5" runat="server" 
+    AllowPaging="True" 
+    AllowSorting="True" 
+    AutoGenerateColumns="False" 
+    BackColor="White" 
+    BorderColor="#CCCCCC" 
+    BorderStyle="Solid" 
+    BorderWidth="1px" 
+    CellPadding="3" 
+    Font-Bold="False" 
+    Font-Italic="False" 
+    Font-Overline="False" 
+    Font-Size="12px" 
+    Font-Strikeout="False" 
+    Font-Underline="False" 
+    ForeColor="#333333" 
+    GridLines="Vertical" 
+    PageSize="5">
+    <AlternatingItemStyle 
+        BackColor="#E6E6E6" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Strikeout="False" 
+        Font-Underline="False" />
+    <FooterStyle 
+        BackColor="#999999" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        ForeColor="White" />
+    <HeaderStyle 
+        BackColor="Silver" 
+        Font-Bold="True" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Size="12px" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        HorizontalAlign="Center" 
+        VerticalAlign="Middle" />
+    <PagerStyle 
+        BackColor="Silver" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Size="12px" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        ForeColor="Black" 
+        HorizontalAlign="Center" 
+        Mode="NumericPages" />
+</asp:DataGrid>
+
+<asp:GridView
+
+SkinId="GridViewNormal" runat="server"
+    AllowPaging="False" 
+    AllowSorting="True" 
+    AutoGenerateColumns="False" 
+    BackColor="White" 
+    BorderColor="#CCCCCC" 
+    BorderStyle="Solid" 
+    BorderWidth="1px" 
+    CellPadding="3" 
+    Font-Bold="False" 
+    Font-Italic="False" 
+    Font-Overline="False" 
+    Font-Size="12px" 
+    Font-Strikeout="False" 
+    Font-Underline="False" 
+    ForeColor="#333333" 
+
+    <FooterStyle 
+    BackColor="#5D7B9D" 
+    Font-Bold="True"
+    ForeColor="White" 
+    BorderColor="Lavender" />
+
+</asp:GridView>
+
+<asp:DataGrid SkinId="DataGridGrilla5NoPaging" runat="server" 
+    AllowPaging="False" 
+    AllowSorting="True" 
+    AutoGenerateColumns="False" 
+    BackColor="White" 
+    BorderColor="#CCCCCC" 
+    BorderStyle="Solid" 
+    BorderWidth="1px" 
+    CellPadding="3" 
+    Font-Bold="False" 
+    Font-Italic="False" 
+    Font-Overline="False" 
+    Font-Size="12px" 
+    Font-Strikeout="False" 
+    Font-Underline="False" 
+    ForeColor="#333333" 
+    GridLines="Vertical" 
+    PageSize="5">
+    <AlternatingItemStyle 
+        BackColor="#E6E6E6" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Strikeout="False" 
+        Font-Underline="False" />
+    <FooterStyle 
+        BackColor="#999999" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        ForeColor="White" />
+    <HeaderStyle 
+        BackColor="Silver" 
+        Font-Bold="True" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Size="12px" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        HorizontalAlign="Center" 
+        VerticalAlign="Middle" />
+    <PagerStyle 
+        BackColor="Silver" 
+        Font-Bold="False" 
+        Font-Italic="False" 
+        Font-Overline="False" 
+        Font-Size="12px" 
+        Font-Strikeout="False" 
+        Font-Underline="False" 
+        ForeColor="Black" 
+        HorizontalAlign="Center" 
+        Mode="NumericPages" />
+</asp:DataGrid>

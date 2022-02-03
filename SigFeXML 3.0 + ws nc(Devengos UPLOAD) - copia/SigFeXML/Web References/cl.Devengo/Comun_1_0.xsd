@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:comun="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" version="1.0" xml:lang="es" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:simpleType name="CodigoCapitulo">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="2" />
+      <xsd:pattern value="[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CodigoPartida">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="2" />
+      <xsd:pattern value="[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CodigoAreaTransaccional">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="3" />
+      <xsd:pattern value="[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TipoTransaccionPrevia">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="2" />
+      <xsd:pattern value="[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ImputacionACatalogoDeReagrupacion">
+    <xsd:annotation>
+      <xsd:documentation>Declara una imputaci??n a un elemento de un
+				cat??logo de reagrupaci??n. El atributo ???catalogo??? identifica el
+				cat??logo de reagrupaci??n al que pertenece el elemento imputado, y
+				atributo ???elemento???, contiene su identificador.
+
+				No hay un campo
+				???monto???, donde se declare el detalle del monto a
+				imputar debido a que
+				se asume que este elemento se usar?? en el
+				contexto de una relaci??n
+				???de muchos a muchos??? entre imputaciones a
+				cat??logos b??sicos y de
+				reagrupaci??n, donde los montos imputados se
+				detallar??n en los
+				cat??logos b??sicos.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="catalogo" type="comun:IdConfiguracion">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del cat??logo de
+						reagrupaci??n incorporado en la transacci??n.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="elemento" type="comun:IdConfiguracion">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el valor imputado al cat??logo de
+						reagrupaci??n. Los valores informados para los cat??logos de
+						reagrupaci??n deben respetar las limitaciones impuestas por la
+						configuraci??n (por ejemplo, podr??a haber en la configuraci??n una
+						limitaci??n que impida que un valor de un cat??logo sea usado junto
+						con un determinado tipo de presupuesto).
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImputacionesAGlosas">
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="imputacion" type="comun:ImputacionAGlosas" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImputacionAGlosas">
+    <xsd:annotation>
+      <xsd:documentation>Representa una imputaci??n a una glosa
+				presupuestaria controlable espec??fica, a nivel de letra.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="programa">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del programa
+						presupuestario al cual est?? asociada la glosa presupuestaria.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0" />
+            <xsd:maxLength value="5" />
+            <xsd:pattern value="[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="numero">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el N??mero de la glosa
+						presupuestaria.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0" />
+            <xsd:maxLength value="18" />
+            <xsd:pattern value="[0-9]*" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="letra">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es la Letra de la glosa presupuestaria.
+					</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0" />
+            <xsd:maxLength value="5" />
+            <xsd:pattern value="[a-zA-Z]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="monto" type="comun:Monto">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el monto o cantidad imputado a la
+						glosa presupuestaria.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="TipoDocumento">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="4" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CodigoTipoDocumento">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="20" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NumeroDocumento">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="20" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DescripcionDocumento">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="500" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="InformacionDeAjuste">
+    <xsd:sequence>
+      <xsd:element name="folioTransaccionAjustada" type="comun:Folio">
+        <xsd:annotation>
+          <xsd:documentation>Corresponde al folio de la trasnacci??n original
+						que ser?? ajustada.
+						Se obtiene de una consulta al devengo original
+						en el sistema
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="tipo" type="comun:IdConfiguracion">
+        <xsd:annotation>
+          <xsd:documentation>Corresponde al tipo de transacci??n que se va a
+						ajustar
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="DescripcionTransaccion">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="480" />
+      <xsd:whiteSpace value="preserve" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TituloTransaccion">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="80" />
+      <xsd:whiteSpace value="preserve" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="TipoDeCambio">
+    <xsd:sequence>
+      <xsd:element name="fecha" type="comun:Fecha" />
+      <xsd:element name="moneda" type="comun:Moneda" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CamposVariables">
+    <xsd:annotation>
+      <xsd:documentation>Corresponde a una imputaci??n a un campo variable
+				existente en la configuraci??n institucional.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element maxOccurs="unbounded" name="campoVariable">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation>Representa un campo variable con su
+							correspondiente valor.
+						</xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element name="codigo">
+              <xsd:annotation>
+                <xsd:documentation>Su valor es el c??digo del campo variable.
+								</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="50" />
+                  <xsd:pattern value="[a-zA-Z0-9]*" />
+                  <xsd:whiteSpace value="collapse" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="valor">
+              <xsd:annotation>
+                <xsd:documentation>Su valor es el valor imputado al campo
+									variable.
+								</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:minLength value="1" />
+                  <xsd:maxLength value="50" />
+                  <xsd:whiteSpace value="preserve" />
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CabeceraTransaccion">
+    <xsd:sequence>
+      <xsd:element name="ejercicio" type="comun:Ejercicio">
+        <xsd:annotation>
+          <xsd:documentation>Su??valor??indica??el??Ejercicio??Fiscal??de??las??transacciones??informadas.
+
+						El Ejercicio Fiscal indicado debe estar abierto, para la Unidad
+						Ejecutora indicada.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="periodo" type="comun:Periodo">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del Per??odo de Operaci??n
+						de las transacciones informadas.
+
+						El Per??odo de Operaci??n indicado
+						debe estar abierto, para la Unidad
+						Ejecutora indicada.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="institucion" type="comun:IdentificacionInstitucion">
+        <xsd:annotation>
+          <xsd:documentation>Se usa para indicar la Unidad Ejecutora de las
+						transacciones incluidas en el archivo XML
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="proceso" type="comun:IdConfiguracion" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="IdentificacionInstitucion">
+    <xsd:annotation>
+      <xsd:documentation>Unidad??ejecutora??a??la??que??se le??registrar??n??los
+				devengos.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="partida" type="comun:CodigoPartida">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo de la Partida para todas
+						las transacciones incluidas en el archivo XML.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="capitulo" type="comun:CodigoCapitulo">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del Cap??tulo para todas
+						las transacciones incluidas en el archivo XML.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="areaTransaccional" type="comun:CodigoAreaTransaccional">
+        <xsd:annotation>
+          <xsd:documentation>Su valor es el c??digo del ??rea Transaccional
+						para todas las transacciones incluidas en el archivo XML.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Moneda">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="BRL" />
+      <xsd:enumeration value="CLP" />
+      <xsd:enumeration value="EUR" />
+      <xsd:enumeration value="JPY" />
+      <xsd:enumeration value="UF" />
+      <xsd:enumeration value="USD" />
+      <xsd:enumeration value="UTM" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Monto">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:totalDigits value="18" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Periodo">
+    <xsd:restriction base="xsd:int">
+      <xsd:pattern value="[0-9]{2}" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Ejercicio">
+    <xsd:annotation>
+      <xsd:documentation>Este tipo define la estructura de los elementos
+				para capturar el valor de un a??o. Junto con declarar que un a??o debe
+				ser del tipo int, define que debe ser mayor al 2013 y tener 4
+				d??gitos.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:int">
+      <xsd:pattern value="20[0-9]{2}" />
+      <xsd:minInclusive value="2011" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RUT">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="12" />
+      <xsd:pattern value="[0-9]{6,9}\-([0-9]|k)" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="Falla" type="comun:FallaMsgType" />
+  <xsd:element name="TicketDeAtencion" type="comun:TicketDeAtencionMsgType" />
+  <xsd:complexType name="TicketDeAtencionMsgType">
+    <xsd:sequence>
+      <xsd:element name="codigo" type="comun:Folio" />
+      <xsd:element name="descripcion" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="FallaMsgType">
+    <xsd:sequence>
+      <xsd:element name="detalles">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="falla" type="comun:DetalleFalla" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Fecha">
+    <xsd:restriction base="xsd:date">
+      <xsd:minInclusive value="2012-01-01" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Folio">
+    <xsd:restriction base="xsd:long">
+      <xsd:totalDigits value="18" />
+      <xsd:minInclusive value="1" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Id">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="18" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="IdConfiguracion">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DetalleFalla">
+    <xsd:sequence>
+      <xsd:element name="codigo" type="xsd:string" />
+      <xsd:element name="descripcion" type="xsd:string" />
+      <xsd:element minOccurs="0" name="validacion" type="xsd:string" />
+      <xsd:element minOccurs="0" name="detalle" type="xsd:anyType" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="MonedaPresupuestaria">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NACIONAL" />
+      <xsd:enumeration value="EXTRANJERA" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TipoRelacion">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PROVEEDOR" />
+      <xsd:enumeration value="CLIENTE" />
+      <xsd:enumeration value="FUNCIONARIO" />
+      <xsd:enumeration value="BENEFICIARIO" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ImputacionACatalogoBasico">
+    <xsd:annotation>
+      <xsd:documentation>Declara la imputaci??n de un monto a un cat??logo
+				b??sico, como por ejemplo, el cat??logo Presupuestario o el Contable.
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="elemento" type="comun:IdConfiguracion">
+        <xsd:annotation>
+          <xsd:documentation>Identifica el cat??logo b??sico a ser imputado.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="monto" type="comun:Monto">
+        <xsd:annotation>
+          <xsd:documentation>Detalla el monto imputado al cat??logo.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="NombreCatalogo">
+    <xsd:annotation>
+      <xsd:documentation><![CDATA[<p>Tipo&nbsp;de&nbsp;Datos&nbsp;Nombre&nbsp;Catalogo&nbsp;de&nbsp;Configuracion</p> ]]></xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NombreLista">
+    <xsd:annotation>
+      <xsd:documentation>Tipo de Datos Nombre Lista de Configuracion
+			</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="50" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TipoTransaccion">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="0" />
+      <xsd:maxLength value="10" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="IdentificacionInstitucionIniciativa">
+    <xsd:sequence>
+      <xsd:element name="partidaIniciativa" type="comun:CodigoPartida" />
+      <xsd:element name="capituloIniciativa" type="comun:CodigoCapitulo" />
+      <xsd:element name="CodigoPrograma">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="CodigoBip">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="3" />
+      <xsd:maxLength value="12" />
+      <xsd:pattern value="[0-9]{1,9}\-([0-9])" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Rate">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="RS">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Recomendado Favorablemente:
+						Recomendaci??n favorable otorgada a los proyectos, programas y
+						estudios b??sicos nuevos y de arrastre, que cumplen con la
+						condici??n de haber sido presentados al S.N.I, con todos los
+						antecedentes y estudios que demuestran que para la soluci??n del
+						problema se ha seleccionado la alternativa que ha demostrado la
+						conveniencia de llevar a cabo la iniciativa postulada&lt;/p&gt; </xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="FI">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Falta de informaci??n: Situaci??n en la
+						cual los antecedentes presentados son insuficientes para respaldar
+						la iniciativa de inversi??n.&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="IN">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Incumplimiento de normativa: Resultado
+						del an??lisis de una iniciativa de inversi??n nueva o de arrastre,
+						sobre la cual MIDEPLAN, no se pronunciar?? cuando ??sta haya sido
+						objeto de asignaci??n de recursos, adjudicada , iniciada o con
+						gasto ejecutado, sin contar previamente con la recomendaci??n
+						favorable&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="OT">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;Objetado Tecnicamente: Resultado del
+						an??lisis que corresponder?? cuando los antecedentes entregados
+						permiten concluir que la iniciativa no es conveniente llevarla a
+						cabo debido a alguna de las siguientes
+						situaciones&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+      <xsd:enumeration value="RE">
+        <xsd:annotation>
+          <xsd:documentation>&lt;p&gt;reevaluaci??n: Iniciativa de inversi??n
+						en proceso de reevaluaci??n t??cnico econ??mica producto de un cambio
+						en sus costos superior al 10% originalmente aprobado o cambios en
+						su naturaleza&lt;/p&gt;</xsd:documentation>
+        </xsd:annotation>
+      </xsd:enumeration>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RegionCodigo">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="2" />
+      <xsd:pattern value="[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ProvinciaCodigo">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="3" />
+      <xsd:pattern value="[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ComunaCodigo">
+    <xsd:restriction base="xsd:string">
+      <xsd:length value="5" />
+      <xsd:pattern value="[0-9]*" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="CabeceraTransaccionIniciativa">
+    <xsd:sequence>
+      <xsd:element name="modulo" type="comun:Modulo" />
+      <xsd:element name="fechaEnvio" type="comun:Fecha" />
+      <xsd:element name="identificacionSistema" type="comun:IdentificacionDeSistema" />
+      <xsd:element name="cantidadRegistros" type="comun:CantidadDeRegistros" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="CantidadDeRegistros">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:whiteSpace value="collapse" />
+      <xsd:maxInclusive value="9999999999" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="IdentificacionDeSistema">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1" />
+      <xsd:maxLength value="100" />
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="Modulo">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+  <xsd:complexType name="ControlErroresIniciativaInversionType">
+    <xsd:sequence>
+      <xsd:element name="ProcesoIDIs">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="tipoEntidad" type="xsd:string" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="descripcionProceso" type="xsd:string" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="IDIsProcesada">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="1" maxOccurs="1" name="partida">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:length value="2" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element minOccurs="0" maxOccurs="1" name="capitulo">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:length value="2" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element minOccurs="0" maxOccurs="1" name="programa">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:length value="2" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="codigo" type="xsd:string" />
+                  <xsd:element minOccurs="0" maxOccurs="unbounded" name="ConceptosError">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element minOccurs="0" maxOccurs="1" name="atributoInvalido" type="xsd:string" />
+                        <xsd:element minOccurs="0" maxOccurs="1" name="valorInvalido" type="xsd:string" />
+                        <xsd:element minOccurs="0" maxOccurs="1" name="tipoValidacion" type="xsd:string" />
+                        <xsd:element minOccurs="0" name="descripcion" type="xsd:string" />
+                        <xsd:element minOccurs="0" maxOccurs="1" name="codigoError" type="xsd:string" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="fallaType">
+    <xsd:sequence>
+      <xsd:element name="codigo" type="xsd:string" />
+      <xsd:element name="descripcion" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="Mes">
+    <xsd:restriction base="xsd:string">
+      <xsd:whiteSpace value="collapse" />
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CodigoEtapa">
+    <xsd:restriction base="xsd:string" />
+  </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:WL5G3N3="http://dipres.gob.cl/ejecucion/contabilidad/servicio/1/0/" xmlns:WL5G3N1="http://dipres.gob.cl/ejecucion/contabilidad/contrato/1/0/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ContabilidadService" targetNamespace="http://dipres.gob.cl/ejecucion/contabilidad/servicio/1/0/">
+  <wsp:Policy wsu:Id="wss_username_token_service_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssUsernameToken10 />
+          </wsp:Policy>
+        </sp:UsernameToken>
+      </wsp:Policy>
+    </sp:SupportingTokens>
+  </wsp:Policy>
+  <WL5G3N0:import namespace="http://dipres.gob.cl/ejecucion/contabilidad/contrato/1/0/" location="https://t03.sigfe.gob.cl/ejecucion/contabilidad/Contabilidad_1_0?WSDL%2Fdipres.gob.cl%2Fejecucion%2Fcontabilidad%2Fwsdl%2FContabilidad_1_0" />
+  <WL5G3N0:types />
+  <WL5G3N0:binding name="ContabilidadBinding" type="WL5G3N1:Contabilidad">
+    <WL5G3N2:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsp:PolicyReference URI="#wss_username_token_service_policy" wsdl:required="false" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" />
+    <WL5G3N0:operation name="buscarTransaccionesContables">
+      <WL5G3N2:operation soapAction="http://dipres.gob.cl/ejecucion/contabilidad/servicio/1/0/buscarTransaccionesContables/" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" parts="solicitud" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" parts="respuesta" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="buscarTransaccionesContablesFault">
+        <WL5G3N2:fault use="literal" name="buscarTransaccionesContablesFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="obtenerTransaccionContable">
+      <WL5G3N2:operation soapAction="http://dipres.gob.cl/ejecucion/contabilidad/servicio/1/0/obtenerTransaccionContable/" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" parts="solicitud" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" parts="respuesta" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="obtenerTransaccionContableFault">
+        <WL5G3N2:fault use="literal" name="obtenerTransaccionContableFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="registrarTransaccionesContables">
+      <WL5G3N2:operation soapAction="http://dipres.gob.cl/ejecucion/contabilidad/servicio/1/0/registrarTransaccionesContables/" />
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal" parts="solicitud" />
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal" parts="respuesta" />
+      </WL5G3N0:output>
+      <WL5G3N0:fault name="registrarTransaccionesContablesFault">
+        <WL5G3N2:fault use="literal" name="registrarTransaccionesContablesFault" namespace="" />
+      </WL5G3N0:fault>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="contabilidad">
+    <WL5G3N0:documentation>Este puerto corresponde al punto de acceso a los
+			servicios ofrecidos por el participante ContabilidadService.</WL5G3N0:documentation>
+    <WL5G3N0:port name="ContabilidadPort" binding="WL5G3N3:ContabilidadBinding">
+      <WL5G3N2:address location="https://t03.sigfe.gob.cl/ejecucion/contabilidad/Contabilidad_1_0" />
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</wsdl:definitions>

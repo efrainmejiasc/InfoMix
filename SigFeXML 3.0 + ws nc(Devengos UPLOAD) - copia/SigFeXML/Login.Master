@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="SigFeXML.Login1" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="~/App_Themes/Sigfe/Sigfe.css" rel="stylesheet" type="text/css" />
+    
+      <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <form id="Form1" runat="server">
+    <div class="page">
+     <%--TOOLKIT SCRIPT MANAGER--%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnableScriptGlobalization="True"
+            EnableScriptLocalization="True">
+        </asp:ScriptManager>
+
+           <%--JAVASCRIPT--%>
+        <script language="javascript" type="text/javascript">
+            var ModalProgress = '<%= pProcesando_ModalPopupExtender.ClientID %>';
+            Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(beginReq);
+
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endReq);
+
+            function beginReq(sender, args) {
+                $find(ModalProgress).show();
+            }
+            function endReq(sender, args) {
+                $find(ModalProgress).hide();
+            }
+
+                   </script>
+
+        <div style="background-image: url('/images/framework_logo.png'); position: relative;">
+            <%-- <div style="background-color: red;" >--%>
+            <div style="height: 160px; margin-left: 0px;">
+                
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <asp:Panel ID="pProcesando" runat="server" CssClass="PanelProcesando">
+            <asp:UpdateProgress ID="upProcesando" runat="server" DisplayAfter="0">
+                <ProgressTemplate>
+                    <div align="center">
+                        <table class="Procesando">
+                            <tr>
+                                <th>                                   
+                                    <br />
+                                    <asp:Image ID="Image1" runat="server" ImageUrl="images/ajax-loader.gif" />
+                                    <br />
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblProcesando" runat="server" Text="Procesando..." />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </ProgressTemplate>
+            </asp:UpdateProgress>
+        </asp:Panel>
+        <cc1:modalpopupextender id="pProcesando_ModalPopupExtender" runat="server" backgroundcssclass="SegundoPlano"
+            popupcontrolid="pProcesando" targetcontrolid="pProcesando">
+    </cc1:modalpopupextender>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>

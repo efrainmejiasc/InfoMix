@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:devengo="http://dipres.gob.cl/ejecucion/devengo/esquema/1/0/" xmlns:contrato="http://dipres.gob.cl/ejecucion/devengo/contrato/1/0/" xmlns:comun="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" name="contrato" targetNamespace="http://dipres.gob.cl/ejecucion/devengo/contrato/1/0/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>Este??paquete??contiene??los??elementos??involucrados??en??la??definici??n??abstracta??del??contrato??del??servicio??Web??de??Devengos.</wsdl:documentation>
+  <wsp:Policy wsu:Id="wss_username_token_service_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:oralgp="http://schemas.oracle.com/ws/2006/01/loggingpolicy" xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:orasp="http://schemas.oracle.com/ws/2006/01/securitypolicy" xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssUsernameToken10 />
+          </wsp:Policy>
+        </sp:UsernameToken>
+      </wsp:Policy>
+    </sp:SupportingTokens>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://dipres.gob.cl/ejecucion/devengo/contrato/1/0/">
+      <xsd:import schemaLocation="https://www.sigfe.gob.cl/ejecucion/devengo/Devengo_1_0?SCHEMA%2Fdipres.gob.cl%2Fejecucion%2Fcomun%2Fxsd%2FComun_1_0" namespace="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" />
+      <xsd:import schemaLocation="https://www.sigfe.gob.cl/ejecucion/devengo/Devengo_1_0?SCHEMA%2Fdipres.gob.cl%2Fejecucion%2Fdevengo%2Fxsd%2FDevengo_1_0" namespace="http://dipres.gob.cl/ejecucion/devengo/esquema/1/0/" />
+      <xsd:annotation>
+        <xsd:documentation>Este paquete contiene los elementos involucrados en la definici n abstracta del contrato del servicio Web de Devengos.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType name="SolicitudDeRegistroDeDevengosMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Esta clase define el mensaje que se utiliza para generar una solicitud de la creaci n o ajuste de
+						un conjunto de devengos.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="cabecera" type="comun:CabeceraTransaccion">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="detalles">
+            <xsd:annotation />
+            <xsd:complexType>
+              <xsd:annotation />
+              <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" name="devengo" type="devengo:Devengo">
+                  <xsd:annotation />
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SolicitudDeRegistroDeDevengos" type="contrato:SolicitudDeRegistroDeDevengosMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Este atributo establece que el tipo global
+						SolicitudDeRegistroDeDevengos corresponde a la definici n de tipo
+						de mensaje SolicitudDeRegistroDeDevengosMsgType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:complexType name="SolicitudDeObtencionDeDevengoMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Esta clase define el mensaje que se utiliza para generar una solicitud de obtenci n de
+						elemento devengo espec fico.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="partida" type="comun:CodigoPartida">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="capitulo" type="comun:CodigoCapitulo">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="areaTransaccional" type="comun:CodigoAreaTransaccional">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="ejercicio" type="comun:Ejercicio">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="folio" type="xsd:long">
+            <xsd:annotation />
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SolicitudDeObtencionDeDevengo" type="contrato:SolicitudDeObtencionDeDevengoMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Este atributo establece que el tipo global
+						SolicitudDeObtencionDeDevengo corresponde a la definici n de tipo
+						de mensaje SolicitudDeObtencionDeDevengoMsgType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:complexType name="RespuestaObtencionDeDevengoMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Esta clase define el tipo de mensaje que se utiliza para responder a una solicitud de obtenci n de un
+						elemento devengo particular.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="devengo" type="devengo:Devengo">
+            <xsd:annotation />
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RespuestaObtencionDeDevengo" type="contrato:RespuestaObtencionDeDevengoMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Este atributo establece que el tipo global
+						RespuestaDeObtencionDeDevengo corresponde a la definici n de tipo
+						de mensaje RespuestaDeObtencionDeDevengosMsgType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:complexType name="SolicitudDeBusquedaDeDevengosMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Esta clase define el tipo
+						mensaje que se utiliza para generar una solicitud de b squeda de devengos.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="partida" type="comun:CodigoPartida">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="capitulo" type="comun:CodigoCapitulo">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="areaTransaccional" type="comun:CodigoAreaTransaccional">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="ejercicio" type="comun:Ejercicio">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="tipoTransaccion" type="xsd:string">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="fechaInicio" type="comun:Fecha">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="fechaFin" type="comun:Fecha">
+            <xsd:annotation />
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SolicitudDeBusquedaDeDevengos" type="contrato:SolicitudDeBusquedaDeDevengosMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Este atributo establece que el tipo global
+						SolicitudDeBusquedaDeDevengos corresponde a la definici n de tipo
+						de mensaje SolicitudDeBusquedaDeDevengosMsgType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:complexType name="RespuestaBusquedaDeDevengosMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Esta clase define el
+						tipo mensaje que se utiliza para responder a una solicitud de b squeda de devengos.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="resumenesDeDevengos">
+            <xsd:annotation />
+            <xsd:complexType>
+              <xsd:annotation />
+              <xsd:sequence>
+                <xsd:element minOccurs="0" maxOccurs="unbounded" name="resumenDeDevengo" type="devengo:ResumenDeDevengo">
+                  <xsd:annotation />
+                </xsd:element>
+              </xsd:sequence>
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RespuestaBusquedaDeDevengos" type="contrato:RespuestaBusquedaDeDevengosMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Este atributo establece que el tipo global
+						RespuestaDeBusquedaDeDevengos corresponde a la definici n de tipo
+						de mensaje RespuestaDeBusquedaDeDevengosMsgType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DevengobuscarDevengosRequest">
+    <wsdl:part name="solicitud" element="contrato:SolicitudDeBusquedaDeDevengos" />
+  </wsdl:message>
+  <wsdl:message name="DevengobuscarDevengosResponse">
+    <wsdl:part name="respuesta" element="contrato:RespuestaBusquedaDeDevengos" />
+  </wsdl:message>
+  <wsdl:message name="DevengobuscarDevengosFalla">
+    <wsdl:part name="falla" element="comun:Falla" />
+  </wsdl:message>
+  <wsdl:message name="DevengoobtenerDevengoRequest">
+    <wsdl:part name="solicitud" element="contrato:SolicitudDeObtencionDeDevengo" />
+  </wsdl:message>
+  <wsdl:message name="DevengoobtenerDevengoResponse">
+    <wsdl:part name="respuesta" element="contrato:RespuestaObtencionDeDevengo" />
+  </wsdl:message>
+  <wsdl:message name="DevengoobtenerDevengoFalla">
+    <wsdl:part name="falla" element="comun:Falla" />
+  </wsdl:message>
+  <wsdl:message name="DevengoregistrarDevengosRequest">
+    <wsdl:part name="solicitud" element="contrato:SolicitudDeRegistroDeDevengos" />
+  </wsdl:message>
+  <wsdl:message name="DevengoregistrarDevengosResponse">
+    <wsdl:part name="respuesta" element="comun:TicketDeAtencion" />
+  </wsdl:message>
+  <wsdl:message name="DevengoregistrarDevengosFalla">
+    <wsdl:part name="falla" element="comun:Falla" />
+  </wsdl:message>
+  <wsdl:portType name="Devengo">
+    <wsdl:documentation>Esta??interfaz??define??los m??todos??del??servicio??Web??de??Devengo.</wsdl:documentation>
+    <wsdl:operation name="buscarDevengos">
+      <wsdl:documentation>Obtiene??un??conjunto??de??devengos??en??base??a??un??rango??de??fechas. Los elementos del conjunto retornado??tienen??un??resumen??de??la??informaci??n??almacenada??del??sistema.??Para??obtener??toda??la??informaci??n??de??un??elemento??devengo??particular,??se??debe??invocar??el??m??todo??obtenerDevengo.</wsdl:documentation>
+      <wsdl:input message="contrato:DevengobuscarDevengosRequest" />
+      <wsdl:output message="contrato:DevengobuscarDevengosResponse" />
+      <wsdl:fault name="buscarDevengosFault" message="contrato:DevengobuscarDevengosFalla" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerDevengo">
+      <wsdl:documentation>Retorna??la??informaci??n??de??un??elemento devengo??espec??fico.</wsdl:documentation>
+      <wsdl:input message="contrato:DevengoobtenerDevengoRequest" />
+      <wsdl:output message="contrato:DevengoobtenerDevengoResponse" />
+      <wsdl:fault name="obtenerDevengoFault" message="contrato:DevengoobtenerDevengoFalla" />
+    </wsdl:operation>
+    <wsdl:operation name="registrarDevengos">
+      <wsdl:documentation>Crea??o??ajusta??un conjunto de??devengos??en??el??sistema??de??manera??asincr??nica.??Este??m??todo??retorna??un??ticket??de??atenci??n,??el??cual??puede??ser??utilizado??posteriormente??para??consultar??el??estado??de??la??operaci??n.</wsdl:documentation>
+      <wsdl:input message="contrato:DevengoregistrarDevengosRequest" />
+      <wsdl:output message="contrato:DevengoregistrarDevengosResponse" />
+      <wsdl:fault name="registrarDevengosFault" message="contrato:DevengoregistrarDevengosFalla" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

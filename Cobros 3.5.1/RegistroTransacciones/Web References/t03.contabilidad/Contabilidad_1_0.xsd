@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:cont="http://dipres.gob.cl/ejecucion/contabilidad/esquema/1/0/" xmlns:comun="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://dipres.gob.cl/ejecucion/contabilidad/esquema/1/0/" version="1.0" xml:lang="es" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:import schemaLocation="https://t03.sigfe.gob.cl/ejecucion/contabilidad/Contabilidad_1_0?SCHEMA%2Fdipres.gob.cl%2Fejecucion%2Fcomun%2Fxsd%2FComun_1_0" namespace="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" />
+  <xsd:annotation>
+    <xsd:documentation>Este paquete define los esquemas de datos relacionados específicamente con la entidad Contabilidad, y que se utilizan para la definición e implementación del contrato del servicio Web.
+		</xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexType name="AgrupacionDeConceptosDeContabilidad">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" form="qualified" name="camposVariables" type="comun:CamposVariables" />
+      <xsd:element minOccurs="0" name="conceptosContabilidadPatrimonial">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" form="qualified" name="concepto" type="cont:ConceptoContabilidadPatrimonial" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element form="qualified" name="debe" type="comun:Monto" />
+      <xsd:element form="qualified" name="haber" type="comun:Monto" />
+      <xsd:element name="monedaPresupuestaria" type="comun:MonedaPresupuestaria" />
+      <xsd:element minOccurs="0" form="qualified" name="idAgrupacionAjustada" type="comun:Folio" />
+      <xsd:element minOccurs="0" form="qualified" name="idAgrupacionRelacionada" type="comun:Folio" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CarteraBancaria">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" form="qualified" name="camposVariables" type="comun:CamposVariables" />
+      <xsd:element name="cuentaBancaria">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0" />
+            <xsd:maxLength value="20" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="debe" type="comun:Monto" />
+      <xsd:element name="fechaDocumento" type="comun:Fecha" />
+      <xsd:element minOccurs="0" name="folioContabilidad" type="comun:Folio" />
+      <xsd:element name="haber" type="comun:Monto" />
+      <xsd:element minOccurs="0" name="idCarteraOrigen" type="comun:Folio" />
+      <xsd:element minOccurs="0" name="medioDePago">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:pattern value="Efectivo|Vale Vista|TEF|Pago Automatico Cuentas|Deposito Efectivo|Deposito Documento|Cargo Bancario|Tarjeta Credito|Tarjeta Debito|Cheque" />
+            <xsd:whiteSpace value="preserve" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="numeroDocumento" type="comun:NumeroDocumento" />
+      <xsd:element minOccurs="0" name="rutBanco" type="comun:RUT" />
+      <xsd:element minOccurs="0" name="tipoDeCambio" type="comun:TipoDeCambio" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CarteraFinanciera">
+    <xsd:sequence>
+      <xsd:element name="cumplimientosDeCartera">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="cumplimiento" type="cont:CumplimientoDeCartera" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" maxOccurs="unbounded" form="qualified" name="camposVariables" type="comun:CamposVariables" />
+      <xsd:element form="qualified" name="debe" type="comun:Monto" />
+      <xsd:element form="qualified" name="fechaDocumento" type="comun:Fecha" />
+      <xsd:element minOccurs="0" form="qualified" name="codigoTipoDocumento" type="comun:CodigoTipoDocumento" />
+      <xsd:element minOccurs="0" form="qualified" name="numeroDocumento" type="comun:NumeroDocumento" />
+      <xsd:element minOccurs="0" form="qualified" name="folioContabilidad" type="comun:Folio" />
+      <xsd:element form="qualified" name="haber" type="comun:Monto" />
+      <xsd:element minOccurs="0" form="qualified" name="idCarteraOrigen" type="comun:Folio">
+        <xsd:annotation>
+          <xsd:documentation>Corresponde al correlativo de la cartera bancaria original</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element minOccurs="0" form="qualified" name="rut" type="comun:RUT" />
+      <xsd:element minOccurs="0" name="tipoDeCambio" type="comun:TipoDeCambio">
+        <xsd:annotation>
+          <xsd:documentation>Corresponde al tipo de cambio asociado a la cartera financiera</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ConceptoContabilidadPatrimonial">
+    <xsd:sequence>
+      <xsd:element form="qualified" name="debe" nillable="true" type="comun:Monto" />
+      <xsd:element form="qualified" name="haber" nillable="true" type="comun:Monto" />
+      <xsd:element form="qualified" name="id" type="comun:Folio" />
+      <xsd:element minOccurs="0" form="qualified" name="idConceptoAjustado" type="comun:Folio" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CumplimientoDeCartera">
+    <xsd:sequence>
+      <xsd:element name="agrupacionesDeConceptosDeContabilidad">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" form="qualified" name="agrupacion" type="cont:AgrupacionDeConceptosDeContabilidad" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element form="qualified" name="debe" type="comun:Monto" />
+      <xsd:element form="qualified" name="fecha" type="comun:Fecha" />
+      <xsd:element form="qualified" name="haber" type="comun:Monto" />
+      <xsd:element minOccurs="0" form="qualified" name="idCumplimientoAjustado" type="comun:Folio">
+        <xsd:annotation>
+          <xsd:documentation>Corresponde al correlativo de cumplimiento de cartera</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element form="qualified" name="rutDestinatario" type="comun:RUT" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImputacionACatalogoPropioDeContabilidad">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="imputacion" type="comun:ImputacionACatalogoDeReagrupacion" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ImputacionACuentaContable">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="idImputacionAjustada" type="comun:Folio" />
+      <xsd:element minOccurs="0" name="carterasBancarias">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" form="qualified" name="cartera" type="cont:CarteraBancaria" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="carterasFinancieras">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" form="qualified" name="cartera" type="cont:CarteraFinanciera" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element form="qualified" name="codigoCuenta">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0" />
+            <xsd:maxLength value="30" />
+            <xsd:pattern value="[0-9]*" />
+            <xsd:whiteSpace value="collapse" />
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element form="qualified" name="montoDebe" type="comun:Monto" />
+      <xsd:element form="qualified" name="montoHaber" type="comun:Monto" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="TransaccionContabilidad">
+    <xsd:sequence>
+      <xsd:element name="descripcion" type="comun:DescripcionTransaccion">
+        <xsd:annotation>
+          <xsd:documentation>Este elemento corresponde a una reseña del contenido de la transacción de contabilidad.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="id" type="comun:Id">
+        <xsd:annotation>
+          <xsd:documentation>Identificador de negocio asignado por el usuario a la transacción (en contraste 
+          			al folio interno, que es asignado por el sistema una vez creado exitosamente). Debe ser único para 
+          			el área transaccional y en el contexto del archivo en el que se transmite.
+          			</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="informacionDeTransaccion">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element name="informacionDeAjuste" type="comun:InformacionDeAjuste" />
+            <xsd:element name="informacionDeCreacion">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element form="qualified" name="procesoFuente">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:minLength value="1" />
+                        <xsd:maxLength value="4" />
+                        <xsd:pattern value="[0-9]*" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element form="qualified" name="tipoMovimiento">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:minLength value="1" />
+                        <xsd:maxLength value="3" />
+                        <xsd:pattern value="[0-9]*" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element minOccurs="0" form="qualified" name="tipoOperacion">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:minLength value="0" />
+                        <xsd:maxLength value="4" />
+                        <xsd:pattern value="[0-9]*" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="titulo" type="comun:TituloTransaccion">
+        <xsd:annotation>
+          <xsd:documentation>Este elemento corresponde al rótulo de la transacción de contabilidad.
+					</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="agrupacionesDeImputacionesACuentasContables">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="agrupacion">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element minOccurs="0" name="idAgrupacionAjustada" type="comun:Folio" />
+                  <xsd:element name="imputacionesACuentasContables">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element minOccurs="2" maxOccurs="unbounded" name="imputacion" type="cont:ImputacionACuentaContable" />
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element maxOccurs="unbounded" name="imputacionesACatalogosPropios" type="cont:ImputacionACatalogoPropioDeContabilidad" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResumenTransaccionContable">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="folio" type="comun:Folio" />
+      <xsd:element minOccurs="0" name="ejercicio" type="comun:Ejercicio" />
+      <xsd:element minOccurs="0" name="titulo" type="comun:TituloTransaccion" />
+      <xsd:element minOccurs="0" name="debe" type="comun:Monto" />
+      <xsd:element minOccurs="0" name="haber" type="comun:Monto" />
+      <xsd:element minOccurs="0" name="estado" type="xsd:string" />
+      <xsd:element minOccurs="0" name="cuentaContables">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" name="cuenta">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="codigo">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:minLength value="0" />
+                        <xsd:maxLength value="30" />
+                        <xsd:pattern value="[0-9]*" />
+                        <xsd:whiteSpace value="collapse" />
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element minOccurs="0" name="debe" type="comun:Monto" />
+                  <xsd:element minOccurs="0" name="haber" type="comun:Monto" />
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

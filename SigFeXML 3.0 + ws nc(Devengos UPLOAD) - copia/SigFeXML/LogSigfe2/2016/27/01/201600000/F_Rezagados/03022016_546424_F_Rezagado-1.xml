@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Envelope xmlns="http://www.w3.org/2003/05/soap-envelope">
+	<Header />
+	<Body>
+<Devengo xmlns="http://sigfe.cl/ws/inter/verticales/devengo">
+	<cabeceraArchivoType>
+		<ejercicio>2016</ejercicio>
+		<periodo>01</periodo>
+		<proceso>0301</proceso>
+		<identificacionEnvio>1602031222095610</identificacionEnvio>
+		<montoTotal>30900</montoTotal>
+		<cantidadTransacciones>1</cantidadTransacciones>
+		<usuarioGenerador>cmunozca</usuarioGenerador>
+		<usuarioAprobador>cmunozca</usuarioAprobador>
+		<informacionInstitucionType>
+			<partida>16</partida>
+			<capitulo>04</capitulo>
+			<areaTransaccional>001</areaTransaccional>
+		</informacionInstitucionType>
+	</cabeceraArchivoType>
+	<transaccionType>
+		<folioOriginal />
+		<tipoTransaccion>1</tipoTransaccion>
+		<idTransferencia>546424</idTransferencia>
+		<titulo>FA_130056_2016-01-27</titulo>
+		<descripcionTransaccionDevengo>FA_130056_2016-01-27</descripcionTransaccionDevengo>
+		<tipoAjuste />
+		<devengoTED>false</devengoTED>
+		<documentoType>
+			<correlativoDocumento />
+			<tipoDocumento>0101</tipoDocumento>
+			<descripcionDocumentoDevengo>FA_130056_2016-01-27</descripcionDocumentoDevengo>
+			<numeroDocumentoDevengo>130056</numeroDocumentoDevengo>
+			<fechaDocumentoDevengo>2016-01-27</fechaDocumentoDevengo>
+			<fechaRecepcionConforme />
+			<monedaDocumentoDevengo>CLP</monedaDocumentoDevengo>
+			<fechaTipoCambio />
+			<contabilizacionImpuesto>true</contabilizacionImpuesto>
+			<montoTotalNetoOrigen>30900</montoTotalNetoOrigen>
+			<imputacionAGlosasType>
+				<programaPresupuestario />
+				<numeroGlosaPresupuestaria />
+				<letraGlosaPresupuestaria />
+				<valorImputacion />
+			</imputacionAGlosasType>
+			<camposVariablesType>
+				<campoVariableType>
+					<codigo />
+					<valor />
+				</campoVariableType>
+			</camposVariablesType>
+			<impuestoType>
+				<codigoImpuesto>1</codigoImpuesto>
+				<montoBase>30900</montoBase>
+			</impuestoType>
+			<principalType>
+				<rut>9107238-6</rut>
+				<institucionTED />
+				<requerimientoCompromisoType>
+					<correlativoRequerimientoCompromiso>2247985</correlativoRequerimientoCompromiso>
+					<proceso>01</proceso>
+					<folio>127</folio>
+					<combinacionType>
+						<conceptoPresupuestarioType>
+							<concepto>0701</concepto>
+							<montoNeto>30900</montoNeto>
+							<cuentaContable>
+								<codigoCuentaDebe>11507</codigoCuentaDebe>
+								<codigoCuentaHaber>45201</codigoCuentaHaber>
+								<montoCuentaDebe>30900</montoCuentaDebe>
+								<montoCuentaHaber>30900</montoCuentaHaber>
+							</cuentaContable>
+						</conceptoPresupuestarioType>
+						<catalogosType>
+							<catalogo>iniciativaInversion</catalogo>
+							<valor>00</valor>
+						</catalogosType>
+					</combinacionType>
+				</requerimientoCompromisoType>
+				<cumplimientoType>
+					<rutPrincipalRelacionado>9107238-6</rutPrincipalRelacionado>
+					<fechaCumplimiento>2016-04-03</fechaCumplimiento>
+					<montoCumplimiento>30900</montoCumplimiento>
+				</cumplimientoType>
+			</principalType>
+		</documentoType>
+		<combinacionCatalogoContableType>
+			<codigo />
+			<valor />
+		</combinacionCatalogoContableType>
+	</transaccionType>
+</Devengo></Body>
+</Envelope>

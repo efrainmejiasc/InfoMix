@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:comun="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" xmlns:tns="http://dipres.gob.cl/ejecucion/comun/estadoDeTransaccion/contrato/1/0/" name="contrato" targetNamespace="http://dipres.gob.cl/ejecucion/comun/estadoDeTransaccion/contrato/1/0/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>Este paquete contiene los elementos involucrados en la definición abstracta del contrato del servicio Web de EstadoDeTransacciones.</wsdl:documentation>
+  <wsp:Policy wsu:Id="wss_username_token_service_policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <sp:SupportingTokens xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+      <wsp:Policy>
+        <sp:UsernameToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+          <wsp:Policy>
+            <sp:WssUsernameToken10 />
+          </wsp:Policy>
+        </sp:UsernameToken>
+      </wsp:Policy>
+    </sp:SupportingTokens>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema xmlns:et="http://dipres.gob.cl/ejecucion/comun/estadoDeTransaccion/esquema/1/0/" targetNamespace="http://dipres.gob.cl/ejecucion/comun/estadoDeTransaccion/contrato/1/0/">
+      <xsd:import schemaLocation="https://t03.sigfe.gob.cl/ejecucion/comun/EstadoDeTransaccion_1_0?SCHEMA%2Fdipres.gob.cl%2Fejecucion%2Fcomun%2Fxsd%2FEstadoDeTransaccion_1_0" namespace="http://dipres.gob.cl/ejecucion/comun/estadoDeTransaccion/esquema/1/0/" />
+      <xsd:import schemaLocation="https://t03.sigfe.gob.cl/ejecucion/comun/EstadoDeTransaccion_1_0?SCHEMA%2Fdipres.gob.cl%2Fejecucion%2Fcomun%2Fxsd%2FComun_1_0" namespace="http://dipres.gob.cl/ejecucion/comun/esquema/1/0/" />
+      <xsd:annotation>
+        <xsd:documentation>Este paquete contiene los elementos involucrados en la definición abstracta del contrato del servicio Web de EstadoDeTransacciones.</xsd:documentation>
+      </xsd:annotation>
+      <xsd:complexType name="SolicitudDeEstadoDeTransaccionesMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Esta clase define el tipo mensaje que se utiliza para generar una solicitud de búsqueda de estadoDeTransacciones.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element name="codigoTicket" type="comun:Folio">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="partida" type="comun:CodigoPartida">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="capitulo" type="comun:CodigoCapitulo">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="areaTransaccional" type="comun:CodigoAreaTransaccional">
+            <xsd:annotation />
+          </xsd:element>
+          <xsd:element name="ejercicio" type="comun:Ejercicio">
+            <xsd:annotation />
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SolicitudDeEstadoDeTransacciones" type="tns:SolicitudDeEstadoDeTransaccionesMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Este atributo establece que el tipo global SolicitudDeBusquedaDeEstadoDeTransacciones corresponde a la definición de tipo de mensaje SolicitudDeBusquedaDeEstadoDeTransaccionesMsgType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:complexType name="RespuestaDeEstadoDeTransaccionesMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Esta clase define el tipo mensaje que se utiliza para responder a una solicitud de búsqueda de estadoDeTransacciones.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="codigoTicketDeAtencion" type="comun:Folio" />
+          <xsd:element name="codigoAreaTransaccional" type="comun:CodigoAreaTransaccional" />
+          <xsd:element name="ejercicio" type="comun:Ejercicio" />
+          <xsd:element name="identificacionDeEnvio" type="xsd:string" />
+          <xsd:element name="fechaDeRecepcion" type="comun:Fecha" />
+          <xsd:element name="estado" type="xsd:string" />
+          <xsd:element minOccurs="0" name="codigoTicketDeError" type="comun:Folio" />
+          <xsd:element name="detalles" type="et:EstadosDeTransacciones" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RespuestaDeEstadoDeTransacciones" type="tns:RespuestaDeEstadoDeTransaccionesMsgType">
+        <xsd:annotation>
+          <xsd:documentation>Este atributo establece que el tipo global RespuestaDeBusquedaDeEstadoDeTransacciones corresponde a la definición de tipo de mensaje RespuestaDeBusquedaDeEstadoDeTransaccionesMsgType.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerEstadoDeTransaccionesRequest">
+    <wsdl:part name="solicitud" element="tns:SolicitudDeEstadoDeTransacciones" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEstadoDeTransaccionesResponse">
+    <wsdl:part name="respuesta" element="tns:RespuestaDeEstadoDeTransacciones" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEstadoDeTransaccionesFalla">
+    <wsdl:part name="falla" element="comun:Falla" />
+  </wsdl:message>
+  <wsdl:portType name="EstadoDeTransaccion">
+    <wsdl:documentation>Esta interfaz define los métodos del servicio Web de EstadoDeTransaccion.</wsdl:documentation>
+    <wsdl:operation name="obtenerEstadoDeTransacciones">
+      <wsdl:documentation>Obtiene un conjunto de estadoDeTransacciones en base a un rango de fechas. Los elementos del conjunto retornado tienen un resumen de la información almacenada del sistema. Para obtener toda la información de un elemento estadoDeTransaccion particular, se debe invocar el método obtenerEstadoDeTransaccion.</wsdl:documentation>
+      <wsdl:input message="tns:ObtenerEstadoDeTransaccionesRequest" />
+      <wsdl:output message="tns:ObtenerEstadoDeTransaccionesResponse" />
+      <wsdl:fault name="obtenerEstadoDeTransaccionesFault" message="tns:ObtenerEstadoDeTransaccionesFalla" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
