@@ -931,7 +931,9 @@ namespace SigFeXML.cl.Devengo {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://dipres.gob.cl/ejecucion/devengo/esquema/1/0/")]
     public partial class TransaccionPrevia {
-        internal long folioCombinacion;
+
+        private long folioCombi;
+
         private long folioField;
         
         private bool folioFieldSpecified;
@@ -947,7 +949,20 @@ namespace SigFeXML.cl.Devengo {
         private bool idAgrupacionDeReferenciaFieldSpecified;
         
         private AgrupacionDeImputacionesACatalogos[] agrupacionesDeImputacionesACatalogosField;
-        
+
+        /// <remarks/>
+        public long folioCombinacion
+        {
+            get
+            {
+                return this.folioCombi;
+            }
+            set
+            {
+                this.folioCombi = value;
+            }
+        }
+
         /// <remarks/>
         public long folio {
             get {
@@ -1040,11 +1055,27 @@ namespace SigFeXML.cl.Devengo {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://dipres.gob.cl/ejecucion/devengo/esquema/1/0/")]
     public partial class AgrupacionDeImputacionesACatalogos {
+
+        private long folioAgrupacionDeRef;
         
         private ImputacionAConceptoPresupuestario[] imputacionesAConceptosPresupuestariosField;
         
         private ImputacionACatalogoDeReagrupacion[] imputacionesACatalogosDeReagrupacionField;
-        
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("folioAgrupacionDeReferencia", IsNullable = false)]
+        public long folioAgrupacionDeReferencia
+        {
+            get
+            {
+                return this.folioAgrupacionDeRef;
+            }
+            set
+            {
+                this.folioAgrupacionDeRef = value;
+            }
+        }
+
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("imputacion", IsNullable=false)]
         public ImputacionAConceptoPresupuestario[] imputacionesAConceptosPresupuestarios {

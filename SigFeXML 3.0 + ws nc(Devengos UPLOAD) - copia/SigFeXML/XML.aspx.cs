@@ -1722,7 +1722,7 @@ namespace SigFeXML
                                     dev[0] = doc.idDocumentoAjustado; //correlativo de documento
                                     dev[1] = tra.folioCombinacion;
                                         //folio a buscar en nivel 2x para saber el departamento y seccion
-                                    dev[2] = tra.agrupacionesDeImputacionesACatalogos.folioAgrupacionDeReferencia;
+                                  //  dev[2] = tra.agrupacionesDeImputacionesACatalogos.folioAgrupacionDeReferencia;
                                         //correlativo requeremiento compromiso
                                     dev[3] = cuenta;
 
