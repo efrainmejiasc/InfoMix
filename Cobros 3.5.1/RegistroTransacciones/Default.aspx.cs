@@ -22,10 +22,10 @@ namespace RegistroTransacciones
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UsuarioLogueado"] == null)
+          /*  if (Session["UsuarioLogueado"] == null)
             {
                 Response.Redirect("Login.aspx");
-            }
+            }*/
 
             if (!IsPostBack)
             {
