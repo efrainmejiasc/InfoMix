@@ -35,7 +35,6 @@ namespace RegistroTransacciones
                 //Usuario = txtUser.Text;
                 try
                 {
-                     Response.Redirect("Default.aspx");
 
                     ds = bsn.BuscarUsuario(txtPass.Text.Trim().ToUpper());
 
